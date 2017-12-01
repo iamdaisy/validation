@@ -20,10 +20,14 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+# production:
+#     adapter: mysql2
+#     encoding: utf8
+#     database: validation_production
+#     pool: 5
+#     username: root
+#     password: 123
+
 production:
-    adapter: mysql2
-    encoding: utf8
-    database: validation_production
-    pool: 5
-    username: root
-    password: 123
+  <<: *default
+  database: db/test.sqlite3

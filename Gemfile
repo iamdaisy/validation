@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'mysql2', group: :production
 gem 'devise'
 gem 'faker'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -1,7 +1,23 @@
 Rails.application.routes.draw do
+
+  get 'home/terms'
+
+  get 'home/help'
+
   devise_for :users
   root 'posts#index'
-  resources :posts
+
+
+
+  # get 'posts/:id/create_comment' => "posts#create_comment"
+  resources :posts do
+    member do #posts/:id
+      get 'create_comment'
+    end
+  end
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

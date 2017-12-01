@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :create_comment]
 
   # GET /posts
   # GET /posts.json
@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @comments = @post.comments
   end
 
   # GET /posts/new
@@ -59,6 +60,16 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def create_comment
+    @comment = Comment.new(
+      content: params[:content],
+      post_id: @post.id
+    )
+    @comment.save
+    # render :erb  없어도됨 이름맞추면 알아서 찾아감
+    # redirect_to "/posts/#{@post.id}"
   end
 
   private

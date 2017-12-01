@@ -17,3 +17,35 @@
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
+<p></p>
+
+<%= form_tag create_comment_post_path(@post.id), method: :get, remote: true do %>
+  <%= text_field_tag :content %>
+  <%= submit_tag "작성" %>
+<% end %>
+<hr>
+
+<div id="comments">
+  <% @comments.each do |c| %>
+    <div><%= c.content %><br></div>
+  <% end %>
+</div>
+
+
+<!-- <script>     // remote: true로 안할경우
+
+$(function() {
+  var form = $('#comment');
+  form.on('submit', function(e) {
+    e.preventDefault();
+    var comment = $('#content').val();
+    // $('#list').text(comment);
+    $.ajax({
+      url: "<%= create_comment_post_path(@post) %>",
+      method: "get",
+      data: {content: comment}
+    });
+  });
+})
+
+</script> -->

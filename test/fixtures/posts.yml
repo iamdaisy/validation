@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: <%= Faker::HarryPotter.location %>
+  content: <%= Faker::HarryPotter.quote %>
+  user_id:
+
+two:
+  title: MyString
+  content: MyText
+  user_id:
+
+three:
+  title: MyThird Fixtures
+  content: ohoh
+  user_id:
